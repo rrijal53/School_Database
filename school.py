@@ -18,16 +18,8 @@ def school_type(school_report):
 
     xpath = tree.getpath(find_text(tree)[len(find_text(tree))-1].getparent())
     values = re.findall(r'\d+', xpath)[-2:]
-    if school_type_row[int(values[1])-2]=="ECD":
-		return school_type_column[int(values[0])-3]+"####"
-    elif school_type_row[int(values[1])-2]=="Primary":
-		return "#"+school_type_column[int(values[0])-3]+"###"
-    elif school_type_row[int(values[1])-2]=="Lower_Secondary":
-		return "##"+school_type_column[int(values[0])-3]+"##"
-    elif school_type_row[int(values[1])-2]=="Secondary":
-		return "###"+school_type_column[int(values[0])-3]+"#"
-    else:
-    		return "####"+school_type_column[int(values[0])-3]
+    
+    return school_type_row[int(values[1])-2]+","+school_type_column[int(values[0])-3]
 
 years = {2070,2069,2068,2067,2066,2065,2064}
 school_type_row = {"ECD","Primary","Lower_Secondary","Secondary","Higher_Secondary"}
